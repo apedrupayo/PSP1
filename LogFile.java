@@ -6,10 +6,10 @@ import java.util.logging.SimpleFormatter;
 
 public class LogFile {
     
-    public static void writeLogFile(String user){
+    public static void writeLogFile(String user) throws InterruptedException {
         Logger logger = Logger.getLogger("Suministrador-Cliente Log");
         FileHandler fh;
-        String fileName = "entradas.log";
+        String fileName = "registro_entradas.log";
 
         try {
             // This block configure the logger with handler and formatter
@@ -20,7 +20,8 @@ public class LogFile {
 
             // the following statement is used to log any messages
             logger.info(user);
-
+            Thread.sleep(1000);
+            fh.close();
         } catch (SecurityException e) {
             System.out.println(e.getMessage());
         } catch (IOException e) {

@@ -19,7 +19,7 @@ public class ClienteImpar extends Cliente {
         while (iterationTimes <= 50) {
             try {
                 raf = new RandomAccessFile(fileName, "rw");
-                // fileLock = raf.getChannel().lock();
+                //fileLock = raf.getChannel().lock();
 
                 int[] arrayIntNumbers = Cliente.readFile(fileName);
                 boolean isOdd = kindOfNumber(arrayIntNumbers);

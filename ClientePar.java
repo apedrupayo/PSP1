@@ -33,7 +33,6 @@ public class ClientePar extends Cliente {
                     Cliente.emptyFile(fileName);
                     LogFile.writeLogFile("Cliente par.");
                 }
-
                 //fileLock.release();
                 fileLock = null;
                 raf.close();
