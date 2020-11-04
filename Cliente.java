@@ -7,7 +7,7 @@ public class Cliente {
 
     public static final int bytesSize = 4;
 
-    public static int[] readFile(String fileName) {
+    public static int[] readFile(String fileName) throws InterruptedException {
         try {
             File dataFile = new File(fileName);
             RandomAccessFile randomAccessFile = new RandomAccessFile(dataFile, "r");
@@ -28,6 +28,7 @@ public class Cliente {
                 }
             }
             randomAccessFile.close();
+            Thread.sleep(1000);
             return arrayIntNumbers;
         } catch (IOException ioe) {
             ioe.printStackTrace();
@@ -37,7 +38,7 @@ public class Cliente {
 
     public static void showResult(int[] arrayIntNumbers) throws FileNotFoundException {
         for (int i = 0; i < arrayIntNumbers.length; i++) {
-            System.out.println(arrayIntNumbers[i]);
+            System.out.print(arrayIntNumbers[i] + ", ");
         }
     }
 

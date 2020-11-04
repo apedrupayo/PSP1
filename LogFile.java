@@ -12,7 +12,6 @@ public class LogFile {
         String fileName = "entradas.log";
 
         try {
-
             // This block configure the logger with handler and formatter
             fh = new FileHandler(fileName, true);
             logger.addHandler(fh);
