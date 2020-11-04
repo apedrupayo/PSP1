@@ -12,15 +12,9 @@ public class ClienteImpar extends Cliente {
     }
 
     public static void readFileData(String fileName) throws IOException, InterruptedException {
-        RandomAccessFile raf = null;
-        FileLock fileLock = null;
-
         int iterationTimes = 1;
         while (iterationTimes <= 50) {
             try {
-                raf = new RandomAccessFile(fileName, "rw");
-                //fileLock = raf.getChannel().lock();
-
                 int[] arrayIntNumbers = Cliente.readFile(fileName);
                 boolean isOdd = kindOfNumber(arrayIntNumbers);
                 if (isOdd) {
@@ -33,11 +27,7 @@ public class ClienteImpar extends Cliente {
                     Cliente.emptyFile(fileName);
                     LogFile.writeLogFile("Cliente impar.");
                 }
-
-                // fileLock.release();
-                fileLock = null;
-                raf.close();
-                Thread.sleep(3000);
+                Thread.sleep(1000);
             } catch (FileNotFoundException fnfe) {
                 fnfe.printStackTrace();
             } catch (NullPointerException npe) {

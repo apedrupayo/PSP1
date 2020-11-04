@@ -34,7 +34,7 @@ public class Cliente {
             fileLock.release();
             fileLock = null;
             randomAccessFile.close();
-            Thread.sleep(1000);
+            Thread.sleep(3000);
             return arrayIntNumbers;
         } catch (IOException ioe) {
             ioe.printStackTrace();

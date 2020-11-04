@@ -16,7 +16,7 @@ public class Suministrador {
 
     public static void writeFile(String fileName) throws IOException, InterruptedException {
         RandomAccessFile raf = null;
-        FileLock bloqueo = null;
+        FileLock fileLock = null;
         File file;
         int iterationTimes = 1;
 
@@ -26,7 +26,7 @@ public class Suministrador {
             try {
                 raf = new RandomAccessFile(file, "rwd"); // Abrimos el fichero
                 // Sección crítica
-                bloqueo = raf.getChannel().lock();
+                fileLock = raf.getChannel().lock();
                 System.out.println("Suministrador: Entra en la sección");
                 if (raf.length() == 0) {
                     amountofNumbers();
@@ -36,17 +36,14 @@ public class Suministrador {
                         System.out.println("suministrador " + randomNumber);
                         raf.writeInt(randomNumber);
                     }
-                    raf.close();
                     LogFile.writeLogFile("Suministrador.");
                 } else {
                     System.out.println("Suministrador: esperando a ser leido.");
                 }
                 System.out.println("Suministrador: Sale en la sección");
-                //bloqueo.release();
+                fileLock.release();
                 raf.close();
-                bloqueo = null;
-                // Fin sección crítica
-                // *******************
+                fileLock = null;
                 Thread.sleep(3000); // Simulamos tiempo de creación del dato
             } catch (ClosedChannelException e) {
                 e.printStackTrace();

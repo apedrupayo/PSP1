@@ -12,14 +12,9 @@ public class ClientePar extends Cliente {
     }
 
     public static void readFileData(String fileName) throws IOException, InterruptedException {
-        RandomAccessFile raf = null;
-        FileLock fileLock = null;
-
         int iterationTimes = 1;
         while (iterationTimes <= 50) {
             try {
-                raf = new RandomAccessFile(fileName, "rw");
-                //fileLock = raf.getChannel().lock();
                 int[] arrayIntNumbers = Cliente.readFile(fileName);
                 boolean isEven = kindOfNumber(arrayIntNumbers);
 
@@ -33,10 +28,7 @@ public class ClientePar extends Cliente {
                     Cliente.emptyFile(fileName);
                     LogFile.writeLogFile("Cliente par.");
                 }
-                //fileLock.release();
-                fileLock = null;
-                raf.close();
-                Thread.sleep(3000);
+                Thread.sleep(1000);
             } catch (FileNotFoundException fnfe) {
                 fnfe.printStackTrace();
             } catch (NullPointerException npe) {
