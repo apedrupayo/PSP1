@@ -22,7 +22,7 @@ public class Suministrador {
 
         // Preparamos el acceso al fichero
         file = new File(fileName);
-        while (iterationTimes <= 50) {// escribiremos 10 datos
+        while (iterationTimes <= 14) {// escribiremos 10 datos
             try {
                 raf = new RandomAccessFile(file, "rwd"); // Abrimos el fichero
                 // Sección crítica
