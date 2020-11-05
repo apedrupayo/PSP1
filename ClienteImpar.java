@@ -25,8 +25,8 @@ public class ClienteImpar extends Cliente {
                     Cliente.showAverage(arrayIntNumbers);
                     System.out.println("***************");
                     Cliente.emptyFile(fileName);
-                    LogFile.writeLogFile("Cliente impar.");
                 }
+                LogFile.writeLogFile("Cliente impar.");
                 Thread.sleep(1000);
             } catch (FileNotFoundException fnfe) {
                 fnfe.printStackTrace();

@@ -26,8 +26,8 @@ public class ClientePar extends Cliente {
                     Cliente.showAverage(arrayIntNumbers);
                     System.out.println("***************");
                     Cliente.emptyFile(fileName);
-                    LogFile.writeLogFile("Cliente par.");
                 }
+                LogFile.writeLogFile("Cliente par.");
                 Thread.sleep(1000);
             } catch (FileNotFoundException fnfe) {
                 fnfe.printStackTrace();

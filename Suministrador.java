@@ -33,14 +33,14 @@ public class Suministrador {
                     int randomNumber;
                     for (int i = 0; i < length; i++) {
                         randomNumber = (int) (Math.random() * 20 + 1);
-                        System.out.println("suministrador " + randomNumber);
+                        System.out.println("Numero " + i + ": " + randomNumber);
                         raf.writeInt(randomNumber);
                     }
-                    LogFile.writeLogFile("Suministrador.");
                 } else {
                     System.out.println("Suministrador: esperando a ser leido.");
                 }
                 System.out.println("Suministrador: Sale en la sección");
+                LogFile.writeLogFile("Suministrador.");
                 fileLock.release();
                 raf.close();
                 fileLock = null;
